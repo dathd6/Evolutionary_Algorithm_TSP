@@ -7,7 +7,6 @@ REPLACE_WEAKEST='Replace Weakest'
 REPLACE_FIRST_WEAKEST='Replace First Weakest'
 # Mutation
 SINGLE_SWAP_MUTATION='Single Swap Mutation'
-MULTIPLE_SWAP_MUTATION='Multiple Swap Mutation'
 INVERSION='Inversion'
 # General
 TERMINATION_CRITERION=10000

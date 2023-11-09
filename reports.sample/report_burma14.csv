@@ -1,11 +1,11 @@
 No.,Population Size,Tournament Size,Replacement Function,Mutation Function,Crossover Function,Execution Time,Optimize route,Best Fitness,Generation that achieve best fitness
-3,972,14,Replace Weakest,Single Swap Mutation,Order Crossover (OX),2.876289129257202,"[11, 6, 12, 7, 10, 8, 9, 0, 1, 13, 2, 3, 4, 5]",3323.0,2427
-1,291,4,Replace Weakest,Single Swap Mutation,Partially Mapped Crossover (PMX),1.135241985321045,"[0, 1, 13, 2, 3, 4, 5, 11, 6, 12, 7, 10, 8, 9]",3323.0,2556
-7,984,11,Replace First Weakest,Single Swap Mutation,Partially Mapped Crossover (PMX),1.2888569831848145,"[6, 11, 5, 4, 3, 2, 13, 1, 0, 9, 8, 10, 7, 12]",3323.0,4005
-6,215,3,Replace First Weakest,Inversion,Partially Mapped Crossover (PMX),0.7546036243438721,"[1, 13, 2, 3, 4, 5, 11, 6, 12, 7, 10, 8, 9, 0]",3323.0,5878
-5,493,8,Replace Weakest,Inversion,Partially Mapped Crossover (PMX),1.6971330642700195,"[8, 9, 7, 0, 1, 13, 2, 3, 4, 5, 11, 6, 12, 10]",3336.0,1528
-8,794,72,Replace Weakest,Multiple Swap Mutation,Order Crossover (OX),2.939061164855957,"[6, 11, 5, 4, 3, 2, 1, 0, 9, 10, 8, 7, 13, 12]",3550.0,8079
-2,203,6,Replace Weakest,Multiple Swap Mutation,Partially Mapped Crossover (PMX),1.0454537868499756,"[4, 3, 2, 1, 0, 9, 8, 10, 7, 6, 12, 13, 11, 5]",3579.0,3520
-9,224,2,Replace Weakest,Multiple Swap Mutation,Order Crossover (OX),1.1606121063232422,"[1, 6, 12, 13, 11, 5, 4, 3, 2, 0, 7, 10, 8, 9]",3809.0,3586
-0,241,4,Replace Weakest,Multiple Swap Mutation,Sequential Constructive Crossover (SCX),1.3015251159667969,"[9, 10, 8, 0, 12, 5, 11, 6, 4, 3, 2, 13, 1, 7]",3813.0,1724
-4,629,15,Replace First Weakest,Multiple Swap Mutation,Partially Mapped Crossover (PMX),1.3568017482757568,"[10, 8, 1, 0, 7, 12, 6, 4, 5, 11, 2, 3, 13, 9]",3959.0,9639
+6,798,32,Replace Weakest,Inversion,Partially Mapped Crossover (PMX),2.9152309894561768,"[9, 8, 10, 7, 12, 6, 11, 5, 4, 3, 2, 13, 1, 0]",3323.0,755
+9,556,9,Replace Weakest,Single Swap Mutation,Partially Mapped Crossover (PMX),2.1677660942077637,"[11, 5, 4, 3, 2, 13, 1, 0, 9, 8, 10, 7, 12, 6]",3323.0,1423
+7,820,8,Replace Weakest,Single Swap Mutation,Partially Mapped Crossover (PMX),2.8738291263580322,"[11, 6, 12, 7, 10, 8, 9, 0, 1, 13, 2, 3, 4, 5]",3323.0,4854
+10,996,22,Replace First Weakest,Single Swap Mutation,Order Crossover (OX),1.5505409240722656,"[11, 5, 4, 3, 2, 13, 1, 0, 9, 8, 10, 7, 12, 6]",3323.0,6008
+2,857,13,Replace First Weakest,Inversion,Order Crossover (OX),1.4992578029632568,"[2, 3, 4, 5, 11, 6, 12, 7, 10, 8, 9, 0, 1, 13]",3323.0,7275
+5,678,7,Replace First Weakest,Inversion,Order Crossover (OX),1.204671859741211,"[4, 3, 2, 13, 1, 0, 9, 8, 10, 7, 12, 6, 11, 5]",3323.0,9518
+4,361,4,Replace Weakest,Single Swap Mutation,Partially Mapped Crossover (PMX),1.5467629432678223,"[8, 10, 12, 6, 11, 5, 4, 3, 2, 13, 1, 0, 7, 9]",3336.0,4129
+3,345,10,Replace First Weakest,Inversion,Partially Mapped Crossover (PMX),1.2498319149017334,"[11, 5, 4, 3, 2, 13, 1, 9, 8, 10, 0, 7, 12, 6]",3371.0,1886
+1,921,132,Replace Weakest,Inversion,Sequential Constructive Crossover (SCX),3.8146328926086426,"[11, 5, 4, 3, 2, 1, 0, 9, 8, 10, 7, 12, 6, 13]",3448.0,191
+8,219,12,Replace Weakest,Single Swap Mutation,Sequential Constructive Crossover (SCX),1.153925895690918,"[9, 8, 10, 13, 2, 3, 4, 5, 11, 6, 12, 7, 0, 1]",3455.0,656

@@ -139,7 +139,7 @@ python3 main.py -d datasets/brazil58.xml -e 10 --exploit
 **In this example: I only show Brazil problem**
 Check the report [report_brazil58.csv](./reports.sample/report_brazil58.csv) to see the best fitness that you could have.
 
-![Report Brazil58](./images/report_brazil58.png)
+![Report Brazil58](./screenshots/report_brazil58.png)
 
 Check the Summary Visual to get the overview best fitness and execution time of each run
 
@@ -153,11 +153,13 @@ Check the comparision between population and tournament size
 
 ![Size](./reports.sample/population_and_tournament_size_comparision_brazil58.png)
 
-In this run, I got the best fitness in the report number 202. So I view the route and execution time in the detail `report_202.png` image.
+In this run, I got the best fitness in the report number 202. So I view the route and execution time in the detail `report_104.png` image.
 
-![Report](./reports.sample/report_brazil58/report_202.png)
+![Report](./reports.sample/report_brazil58/report_104.png)
 
+Another example for Burma14 problem `report_6.png`
 
+![Report](./reports.sample/report_burma14/report_6.png)
 
 ## Report structure
 ```md

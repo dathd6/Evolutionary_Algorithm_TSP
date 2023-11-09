@@ -41,7 +41,7 @@ if __name__ == '__main__':
         # Generate image visualize best optimized route and Top 10 best fitness of the population
         exp.visualise()
         # Record data of current experimentation
-        no = round(len(os.listdir(exp.report_dir))) - 1
+        no = round(len(os.listdir(exp.report_dir)))
         exp_data = [no, 
                     exp.population_size,
                     exp.tournament_size,

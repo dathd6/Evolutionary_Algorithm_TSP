@@ -3,8 +3,7 @@ from constants import PARTIALLY_MAPPED_CROSSOVER, \
                       SEQUENTIAL_CONSTRUCTIVE_CROSSOVER, \
                       ORDERED_CROSSOVER, \
                       SINGLE_SWAP_MUTATION, \
-                      INVERSION, \
-                      MULTIPLE_SWAP_MUTATION
+                      INVERSION
 from utils import swap_gene
 
 class TSP:
@@ -56,13 +55,6 @@ class TSP:
         # Single swap mutation
         if operator == SINGLE_SWAP_MUTATION:
             new_solution = swap_gene(self.route) # Swap two random vertices
-        # Multiple swap mutation
-        elif operator == MULTIPLE_SWAP_MUTATION:
-            # Swap N pairs of random vertices
-            for i in range(random.randint(2, self.vertex_count)):
-                if i == 0:
-                    new_solution = swap_gene(self.route)
-                new_solution = swap_gene(new_solution)
         # Inversion mutation
         elif operator == INVERSION:
             # Choose two random indices

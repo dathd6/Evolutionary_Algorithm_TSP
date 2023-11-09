@@ -7,7 +7,7 @@ import matplotlib.gridspec as gridspec
 from matplotlib.lines import Line2D
 from constants import PARTIALLY_MAPPED_CROSSOVER, ORDERED_CROSSOVER, SEQUENTIAL_CONSTRUCTIVE_CROSSOVER
 from constants import REPLACE_FIRST_WEAKEST, REPLACE_WEAKEST
-from constants import SINGLE_SWAP_MUTATION, INVERSION, MULTIPLE_SWAP_MUTATION
+from constants import SINGLE_SWAP_MUTATION, INVERSION
 
 list_crossovers = [
     PARTIALLY_MAPPED_CROSSOVER,
@@ -22,7 +22,6 @@ list_replacements = [
 
 list_mutations = [
     SINGLE_SWAP_MUTATION,
-    MULTIPLE_SWAP_MUTATION,
     INVERSION
 ]
 
@@ -112,20 +111,20 @@ def visualize_summary_graph(file, report):
         execution_time += float(row[-4])
 
     sns.lineplot(
-        x=[int(row[0]) + 1 for row in report],
+        x=[int(row[0]) for row in report],
         y=[row[-2] for row in report],
         color='#3274A1',
         label='fitness',
         ax=ax[0])
-    sns.scatterplot(x=[int(best_solution[0]) + 1], y=[best_solution[-2]], ax=ax[0], color='#E1812C')
-    ax[0].annotate(best_solution[-2], (int(best_solution[0]) + 1, best_solution[-2]), textcoords="offset points", xytext=(0, -10), ha='center', fontsize=6, color='#E1812C', weight='bold')
+    sns.scatterplot(x=[int(best_solution[0])], y=[best_solution[-2]], ax=ax[0], color='#E1812C')
+    ax[0].annotate(best_solution[-2], (int(best_solution[0]), best_solution[-2]), textcoords="offset points", xytext=(0, -10), ha='center', fontsize=6, color='#E1812C', weight='bold')
     ax[0].set_ylabel(f'Fitness')
     ax[0].set_xlabel(f'Experiments')
     ax[0].set_title(f'Best fitness from each Experiment')
 
     # Execution time each experiment
     sns.lineplot(
-        x=[int(row[0]) + 1 for row in report],
+        x=[int(row[0]) for row in report],
         y=[float(row[-4]) for row in report],
         color='#CC241D',
         label='time',
