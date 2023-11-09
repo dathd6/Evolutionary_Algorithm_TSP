@@ -138,14 +138,13 @@ def visualize_summary_graph(file, report):
     
 
 def visualize_operators_comparision(file, report):
-    fig = plt.figure(figsize=(20, 10))
+    fig = plt.figure(figsize=(10, 10))
     gs = gridspec.GridSpec(2, 2)
     ax1 = plt.subplot(gs[:, 1])
     ax2 = plt.subplot(gs[0, 0])
     ax3 = plt.subplot(gs[1, 0])
     fig.suptitle(f"Operators comparision", wrap=True)
     plt.subplots_adjust(wspace=0.4, hspace=0.4)
-    # sns.palplot(sequential_colors)
     x = []
     y1 = []
     y2 = []
@@ -200,11 +199,11 @@ def visualize_operators_comparision(file, report):
     sns.barplot(x=x, y=y1, ax=ax3, label='generation', color='#E1812C')
     ax3.set_ylabel('Generations')
     ax3.set_title('Comparision of the Average Generation to converge by Operators')
-    ax3.set_xticklabels(ax3.get_xticklabels(), rotation=45, fontsize=6, ha='right')
+    ax3.set_xticklabels(ax3.get_xticklabels(), rotation=45, fontsize=8, ha='right')
 
     ax2.set_ylabel('Fitness')
     ax2.set_title('Comparision of the Average Best Fitness by Operators')
-    ax2.set_xticklabels(ax2.get_xticklabels(), rotation=45, fontsize=6, ha='right')
+    ax2.set_xticklabels(ax2.get_xticklabels(), rotation=45, fontsize=8, ha='right')
 
     custom_legend_labels = ['Solution']
     custom_legend_markers = [Line2D([0], [0], marker='o', color='w', label='Solution', markerfacecolor='g', markersize=10)]

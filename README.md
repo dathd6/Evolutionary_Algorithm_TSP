@@ -17,20 +17,20 @@
 
 ## File structure:
 
-- main.py: contained the main code to execute N experiments on finding the best fitness
-- constant.py: constant variables
-- utils.py: utility functions (find the best fitness, swap gene in chromosome, visualize data)
-- experimentation.py: Experimentation class
+- [main.py](./main.py): contained the main code to execute N experiments on finding the best fitness
+- [constant.py](./constants.py): constant variables
+- [utils.py](./utils.py): utility functions (find the best fitness, swap gene in chromosome, visualize data)
+- [experimentation.py](./experimentation.py): Experimentation class
     + choose the population/tournament size, crossover/mutation/replacement function (random)
     + Initialize EA and execute the tournament selection/crossover/mutation/replacement through 10,000 generations
     + Generate detail process report
     + Generate image visualise solution's route, convergence curves and execution time, comparision graph between different parameters
-- evolutionary_algorithm.py: EA class
+- [evolutionary_algorithm.py](./evolutionary_algorithm.py): EA class
     + Extract data from XML file
     + Generate population of N random solutions
     + Method of replacement function, tournament selection
     + Method of find the best fitness
-- tsp.py: TSP solution class
+- [tsp.py](./tsp.py): TSP solution class
     + Attribute: fitness and route
     + Method of calculate fitness from route
     + Method of crossover
@@ -41,12 +41,12 @@
         - Single Swap Mutation
         - Multiple Swap Mutation
         - Inversion
-- requirements: requirement's packages/libraries
-- README.md: Documentation for the code
-- datasets/: Folder (datasets) contains data of the map (vertices, edges, cost)
+- [requirements.txt](./requirements.txt): requirement's packages/libraries
+- [README.md](./README.md): Documentation for the code
+- [datasets/](./datasets): Folder (datasets) contains data of the map (vertices, edges, cost)
     + brazil58.xml
     + burma14.xml
-- reports.sample/: Sample result of EA. The best fitness is presented in this sample report.
+- [reports.sample/](./reports.sample/): Sample result of EA. The best fitness is presented in this sample report.
 
 ## Pre-execution
 
@@ -149,9 +149,13 @@ Check the comparision between operators
 
 ![Operators](./reports.sample/operators_comparision_brazil58.png)
 
-Check the comparision between population and tournament size
+Check the comparision between population and tournament size.
 
-![Size](./reports.sample/population_and_tournament_size_comparision_brazil58.png)
+![Size](./screenshots/population_and_tournament_size_comparision_brazil58.png)
+
+To get more data for the above graph. You can comment all possible parameters besides Sequential Constructive Crossover, Inversion Mutation, and Replace Weakest in [utils.py](./utils.py).
+
+![](./screenshots/Paras.png)
 
 In this run, I got the best fitness in the report number 202. So I view the route and execution time in the detail `report_104.png` image.
 

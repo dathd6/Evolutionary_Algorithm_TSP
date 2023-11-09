@@ -46,16 +46,19 @@ class EA:
 
     def generate_best_population(self):
         # Open and read the final report CSV file
-        with open(f'{REPORT_FOLDER}/report_{self.country}.csv', 'r', newline='') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                try:
-                    solution = [int(vertex) for vertex in row['Optimize route'][1:-1].split(',')]
-                    tsp = TSP(self.map_matrix, solution)
-                    self.population.append(tsp)
-                except:
-                    random_tsp = TSP(self.map_matrix)
-                    self.population.append(random_tsp)
+        try:
+            with open(f'{REPORT_FOLDER}/report_{self.country}.csv', 'r', newline='') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    try:
+                        solution = [int(vertex) for vertex in row['Optimize route'][1:-1].split(',')]
+                        tsp = TSP(self.map_matrix, solution)
+                        self.population.append(tsp)
+                    except:
+                        random_tsp = TSP(self.map_matrix)
+                        self.population.append(random_tsp)
+        except:
+            print('No recorded solutions')
 
     def tournament_selection(self, tournament_size):
         # Select best fitness in tournament selection
