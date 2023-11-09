@@ -17,8 +17,9 @@ class EA:
         ############################################
         tree = ET.parse(file)
         root = tree.getroot()
-        self.city = root.find('name').text
+        self.country = root.find('name').text
         # Find all the vertex element
+        # Map all edges to 2D Matrix
         for vertex in root.findall(".//vertex"):
             self.map_matrix.append([])
             flag = True
@@ -39,14 +40,13 @@ class EA:
         return result
 
     def generate_random_population_p(self, p):
-        self.population = []
         for _ in range(p):
             random_tsp = TSP(self.map_matrix)
             self.population.append(random_tsp)
 
     def generate_best_population(self):
         # Open and read the final report CSV file
-        with open(f'{REPORT_FOLDER}/final_report_{self.city}.csv', 'r', newline='') as csvfile:
+        with open(f'{REPORT_FOLDER}/report_{self.country}.csv', 'r', newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 try:
@@ -63,19 +63,19 @@ class EA:
         parent_b = best_fitness(random.sample(self.population, tournament_size))
         return parent_a, parent_b
 
-    def replace(self, new_solution, function=REPLACE_WEAKEST):
+    def replace(self, new_solution, operator=REPLACE_WEAKEST):
         # Replace solution with the weakest fitness
-        if function == REPLACE_WEAKEST:
+        if operator == REPLACE_WEAKEST:
             weakest_solution_index = None
             for i, solution in enumerate(self.population):
                 if (not weakest_solution_index) or \
                    (self.population[i] > self.population[weakest_solution_index]):
                     weakest_solution_index = i
-            if weakest_solution_index:
+            if weakest_solution_index and self.population[weakest_solution_index] > new_solution:
                 self.population[weakest_solution_index] = new_solution
             return weakest_solution_index
         # Replace first solution with weaker fitness
-        elif function == REPLACE_FIRST_WEAKEST:
+        elif operator == REPLACE_FIRST_WEAKEST:
             for i, solution in enumerate(self.population):
                 if solution > new_solution:
                     self.population[i] = new_solution

@@ -1,6 +1,10 @@
 import random
-
-from constants import CROSSOVER_WITH_FIX, ORDERED_CROSSOVER, SINGLE_SWAP_MUTATION, MULTIPLE_SWAP_MUTATION, INVERSION
+from constants import PARTIALLY_MAPPED_CROSSOVER, \
+                      SEQUENTIAL_CONSTRUCTIVE_CROSSOVER, \
+                      ORDERED_CROSSOVER, \
+                      SINGLE_SWAP_MUTATION, \
+                      INVERSION, \
+                      MULTIPLE_SWAP_MUTATION
 from utils import swap_gene
 
 class TSP:
@@ -18,11 +22,16 @@ class TSP:
         self.calculate_fitness() # Calculate fitness
 
     def __str__(self):
-        return f'Solution {str(self.route)} - fitness {self.fitness}'
+        route = str(self.route)[1:-1].replace(',', ' ->')
+        return f'Solution {route} - fitness {self.fitness}'
 
     def __gt__(self, other):
-        # Compare fitness between solution
+        # Compare fitness between solution >
         return self.fitness > other.fitness
+
+    def __ge__(self, other):
+        # Compare fitness between solution: >=
+        return self.fitness >= other.fitness
 
     def generate_random_solution(self):
         self.route = []
@@ -73,17 +82,18 @@ class TSP:
 
         return TSP(self.map_matrix, new_solution)
 
-    def crossover(self, other_tsp, operator=CROSSOVER_WITH_FIX):
+    def crossover(self, other_tsp, operator=PARTIALLY_MAPPED_CROSSOVER):
         parent_a = self.route.copy()
         parent_b = other_tsp.route.copy()
         child_c = None
         child_d = None
-        random_point_subset = random.randint(1, self.vertex_count - 1)
-        # Crossover with fix
-        if operator == CROSSOVER_WITH_FIX:
+        first_point_subset = random.randint(1, self.vertex_count - 1)
+        second_point_subset = random.randint(first_point_subset, self.vertex_count - 1) + 1
+        # Partially matched crossover
+        if operator == PARTIALLY_MAPPED_CROSSOVER:
             child_c = parent_a.copy()
             child_d = parent_b.copy()
-            for i in range(random_point_subset, self.vertex_count):
+            for i in range(first_point_subset, second_point_subset):
                 # Partially mapped crossover (PMX)
                 swap_gene(child_c, child_c.index(parent_b[i]), i)
                 swap_gene(child_d, child_d.index(parent_a[i]), i)
@@ -93,21 +103,47 @@ class TSP:
                 # cross data
                 child_d[i] = parent_a[i]
                 child_d[child_d.index(child_d[i])] = parent_b[i]
+        # Sequential constructive crossover
+        elif operator == SEQUENTIAL_CONSTRUCTIVE_CROSSOVER:
+            flag = [False for _ in range(self.vertex_count)]
+            index = 0
+            flag[index] = True
+            while not flag[parent_a.index(parent_b[index])]:
+                index = parent_a.index(parent_b[index])
+                flag[index] = True
+            child_c = []
+            child_d = []
+            for i in range(self.vertex_count):
+                if flag[i]:
+                    child_c.append(parent_a[i])
+                    child_d.append(parent_b[i])
+                else:
+                    child_c.append(parent_b[i])
+                    child_d.append(parent_a[i])
+
+
         # Ordered crossover
         elif operator == ORDERED_CROSSOVER:    
-            subset_parent_a = parent_a[:random_point_subset]
-            subset_parent_b = parent_b[:random_point_subset]
+            subset_parent_a = parent_a[first_point_subset:second_point_subset]
+            subset_parent_b = parent_b[first_point_subset:second_point_subset]
 
-            other_subset_parent_a = []
-            other_subset_parent_b = []
+            before_subset_a = []
+            before_subset_b = []
 
             for i in range(self.vertex_count):
-                if not parent_a[i] in subset_parent_b:
-                   other_subset_parent_b.append(parent_a[i])
                 if not parent_b[i] in subset_parent_a:
-                    other_subset_parent_a.append(parent_b[i])
+                    if len(before_subset_a) < first_point_subset:
+                        before_subset_a.append(parent_b[i])
+                    else:
+                        subset_parent_a.append(parent_b[i])
 
-            child_c = other_subset_parent_a + subset_parent_a
-            child_d = other_subset_parent_b + subset_parent_b
+                if not parent_a[i] in subset_parent_b:
+                    if len(before_subset_a) < first_point_subset:
+                        before_subset_b.append(parent_a[i])
+                    else:
+                        subset_parent_b.append(parent_a[i])
+
+            child_c = before_subset_a + subset_parent_a
+            child_d = before_subset_b + subset_parent_b
 
         return TSP(self.map_matrix, child_c), TSP(self.map_matrix, child_d)
